@@ -5,6 +5,9 @@
  */
 package vistas;
 
+import java.awt.Dimension;
+import javax.swing.JInternalFrame;
+
 /**
  *
  * @author fer10
@@ -37,11 +40,11 @@ public class principal extends javax.swing.JFrame {
         Ventas = new javax.swing.JMenu();
         ventas = new javax.swing.JMenuItem();
         Mantenimiento = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        Cliente = new javax.swing.JMenuItem();
+        Producto = new javax.swing.JMenuItem();
+        Vendedor = new javax.swing.JMenuItem();
         Reportes = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        Reportesv = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +79,11 @@ public class principal extends javax.swing.JFrame {
         Ventas.setText("VENTAS");
 
         ventas.setText("Generar Venta");
+        ventas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ventasActionPerformed(evt);
+            }
+        });
         Ventas.add(ventas);
 
         jMenuBar1.add(Ventas);
@@ -83,22 +91,42 @@ public class principal extends javax.swing.JFrame {
         Mantenimiento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mantenimiento.png"))); // NOI18N
         Mantenimiento.setText("MANTENIMIENTO");
 
-        jMenuItem1.setText("Cliente");
-        Mantenimiento.add(jMenuItem1);
+        Cliente.setText("Cliente");
+        Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClienteActionPerformed(evt);
+            }
+        });
+        Mantenimiento.add(Cliente);
 
-        jMenuItem2.setText("Producto");
-        Mantenimiento.add(jMenuItem2);
+        Producto.setText("Producto");
+        Producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProductoActionPerformed(evt);
+            }
+        });
+        Mantenimiento.add(Producto);
 
-        jMenuItem3.setText("Vendedor");
-        Mantenimiento.add(jMenuItem3);
+        Vendedor.setText("Vendedor");
+        Vendedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VendedorActionPerformed(evt);
+            }
+        });
+        Mantenimiento.add(Vendedor);
 
         jMenuBar1.add(Mantenimiento);
 
         Reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reportes.png"))); // NOI18N
         Reportes.setText("REPORTES");
 
-        jMenuItem4.setText("Reporte Ventas");
-        Reportes.add(jMenuItem4);
+        Reportesv.setText("Reporte Ventas");
+        Reportesv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportesvActionPerformed(evt);
+            }
+        });
+        Reportes.add(Reportesv);
 
         jMenuBar1.add(Reportes);
 
@@ -121,10 +149,49 @@ public class principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        // TODO add your handling code here:
+        // menu salir
         System.exit(0);
     }//GEN-LAST:event_SalirActionPerformed
 
+    private void ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventasActionPerformed
+        // ventana ventas
+        Ventas vf=new Ventas();
+        CentrarVentana(vf); 
+    }//GEN-LAST:event_ventasActionPerformed
+
+    private void VendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VendedorActionPerformed
+        // ventana vendedor
+        Vendedor vf= new Vendedor();
+        CentrarVentana(vf);
+        
+    }//GEN-LAST:event_VendedorActionPerformed
+
+    private void ProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductoActionPerformed
+        // ventana producto
+        Producto pf=new Producto();
+        CentrarVentana(pf);
+        
+    }//GEN-LAST:event_ProductoActionPerformed
+
+    private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
+        // ventana cliente
+        Cliente cf=new Cliente();
+        CentrarVentana(cf);
+    }//GEN-LAST:event_ClienteActionPerformed
+
+    private void ReportesvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportesvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ReportesvActionPerformed
+      void CentrarVentana(JInternalFrame frame){
+          VentanaPrincipal.add(frame);
+          Dimension dimension=VentanaPrincipal.getSize();
+          Dimension Dframe=frame.getSize();
+         frame.setLocation((dimension.width -Dframe.height)/2,(dimension.height -Dframe.width)/2);
+         frame.show();
+          
+          
+          
+      }
     /**
      * @param args the command line arguments
      */
@@ -162,17 +229,17 @@ public class principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Ayuda;
+    private javax.swing.JMenuItem Cliente;
     private javax.swing.JMenu Mantenimiento;
     private javax.swing.JMenu Menu;
+    private javax.swing.JMenuItem Producto;
     private javax.swing.JMenu Reportes;
+    private javax.swing.JMenuItem Reportesv;
     private javax.swing.JMenuItem Salir;
+    private javax.swing.JMenuItem Vendedor;
     private javax.swing.JDesktopPane VentanaPrincipal;
     private javax.swing.JMenu Ventas;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem ventas;
     // End of variables declaration//GEN-END:variables
 }
