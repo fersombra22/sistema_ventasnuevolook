@@ -35,7 +35,6 @@ public class principal extends javax.swing.JFrame {
         VentanaPrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         Menu = new javax.swing.JMenu();
-        Ayuda = new javax.swing.JMenuItem();
         Salir = new javax.swing.JMenuItem();
         Ventas = new javax.swing.JMenu();
         ventas = new javax.swing.JMenuItem();
@@ -45,6 +44,7 @@ public class principal extends javax.swing.JFrame {
         Vendedor = new javax.swing.JMenuItem();
         Reportes = new javax.swing.JMenu();
         Reportesv = new javax.swing.JMenuItem();
+        DatosEmpresa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,9 +61,6 @@ public class principal extends javax.swing.JFrame {
 
         Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menu.jpg"))); // NOI18N
         Menu.setText("MENU");
-
-        Ayuda.setText("Ayuda");
-        Menu.add(Ayuda);
 
         Salir.setText("Salir");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +124,9 @@ public class principal extends javax.swing.JFrame {
             }
         });
         Reportes.add(Reportesv);
+
+        DatosEmpresa.setText("Datos de la Empresa");
+        Reportes.add(DatosEmpresa);
 
         jMenuBar1.add(Reportes);
 
@@ -228,8 +228,8 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Ayuda;
     private javax.swing.JMenuItem Cliente;
+    private javax.swing.JMenuItem DatosEmpresa;
     private javax.swing.JMenu Mantenimiento;
     private javax.swing.JMenu Menu;
     private javax.swing.JMenuItem Producto;

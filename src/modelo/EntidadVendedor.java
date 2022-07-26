@@ -5,10 +5,7 @@
  */
 package modelo;
 
-/**
- *
- * @author fer10
- */
+
 public class EntidadVendedor {
     
     int id;

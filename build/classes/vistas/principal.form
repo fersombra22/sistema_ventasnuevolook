@@ -12,11 +12,6 @@
             <Property name="text" type="java.lang.String" value="MENU"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="Ayuda">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ayuda"/>
-              </Properties>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="Salir">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salir"/>
@@ -94,6 +89,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReportesvActionPerformed"/>
               </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="DatosEmpresa">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Datos de la Empresa"/>
+              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -15,66 +15,31 @@ import java.util.List;
  *
  * @author fer10
  */
-public class VendedorDao implements CRUD {
+public class ClienteDao implements CRUD {
 
     Connection con;
-
+    conexion cn = new conexion();
     PreparedStatement ps;
     ResultSet rs;
 
-    EntidadVendedor ven = new EntidadVendedor();
-
-    conexion cn = new conexion();
-
-    Connection acceso;
-
-    public EntidadVendedor ValidarVendedor(String dni, String user) {
-        String sql = "select *from vendedor where dni=? and user=?";
-        try {
-            acceso = cn.conectar();
-            ps = acceso.prepareStatement(sql);
-            ps.setString(1, dni);
-            ps.setString(2, user);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                ven.setId(rs.getInt(1));
-                ven.setDni(rs.getString(2));
-                ven.setNombre(rs.getString(3));
-                ven.setTelefono(rs.getString(4));
-                ven.setUser(rs.getString(5));
-                ven.setEstado(rs.getString(6));
-
-            }
-
-        } catch (Exception e) {
-
-        }
-
-        return ven;
-
-    }
-
     @Override
     public List listar() {
-        List<EntidadVendedor> lista = new ArrayList<>();
-        String sql = "select * from vendedor;";
+        List<EntidadCliente> lista = new ArrayList<>();
+        String sql = "select * from cliente";
 
         try {
             con = cn.conectar();
             ps = con.prepareCall(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-
-                EntidadVendedor c = new EntidadVendedor();
+                EntidadCliente c = new EntidadCliente();
 
                 c.setId(rs.getInt(1));
                 c.setDni(rs.getString(2));
                 c.setNombre(rs.getString(3));
-                c.setTelefono(rs.getString(4));
-                c.setUser(rs.getString(5));
-                c.setEstado(rs.getString(6));
+                c.setDireccion(rs.getString(4));
+                c.setEstado(rs.getString(5));
                 lista.add(c);
-
             }
 
         } catch (Exception e) {
@@ -86,7 +51,7 @@ public class VendedorDao implements CRUD {
     @Override
     public int add(Object[] o) {
         int r = 0;
-        String sql = "insert into vendedor(Dni, Nombre, Telefono, User, Estado)values(?,?,?,?,?)";
+        String sql = "insert into cliente(Dni, Nombre,Direccion,Estado)values(?,?,?,?)";
         try {
             con = cn.conectar();
             ps = con.prepareStatement(sql);
@@ -94,7 +59,6 @@ public class VendedorDao implements CRUD {
             ps.setObject(2, o[1]);
             ps.setObject(3, o[2]);
             ps.setObject(4, o[3]);
-            ps.setObject(5, o[4]);
             r = ps.executeUpdate();
 
         } catch (Exception e) {
@@ -105,7 +69,7 @@ public class VendedorDao implements CRUD {
     @Override
     public int actualizar(Object[] o) {
         int r = 0;
-        String sql = "update vendedor set Dni=?, Nombre=?, Telefono=?, User=?, Estado=? where Idvendedor=?";
+        String sql = "update cliente set Dni=?, Nombre=?,Direccion=?,Estado=? where IdCliente=?";
         try {
             con = cn.conectar();
             ps = con.prepareStatement(sql);
@@ -114,7 +78,6 @@ public class VendedorDao implements CRUD {
             ps.setObject(3, o[2]);
             ps.setObject(4, o[3]);
             ps.setObject(5, o[4]);
-            ps.setObject(6, o[5]);
             r = ps.executeUpdate();
 
         } catch (Exception e) {
@@ -125,9 +88,9 @@ public class VendedorDao implements CRUD {
 
     @Override
     public void eliminar(int id) {
-
-        String sql = "delete from vendedor where Idvendedor=?";
-
+        
+         String sql="delete from cliente where IdCliente=?";
+         
         try {
             con = cn.conectar();
             ps = con.prepareStatement(sql);
